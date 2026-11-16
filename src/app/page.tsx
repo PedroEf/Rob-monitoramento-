@@ -179,7 +179,19 @@ export default function Home() {
           {menu.map(([icon, label]) => (
             <button
               key={label}
-              onClick={() => setActive(label)}
+              onClick={() => {
+  if (label === "Conversas") {
+    window.location.href = "/conversas";
+} else if (
+  label === "Alertas" ||
+  label === "Gerenciamento de alertas" ||
+  label === "Pendências"
+) {
+    window.location.href = "/alertas";
+  } else {
+    setActive(label);
+  }
+}}
               className={`mb-2 flex items-center gap-3 rounded-lg px-4 py-3 text-left text-sm transition ${
                 active === label
                   ? "bg-[#254365] text-white"
